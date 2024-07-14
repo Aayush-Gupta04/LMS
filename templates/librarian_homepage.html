@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Homepage</title>
+    <style>
+        /* Basic CSS for layout */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .profile {
+            margin-bottom: 20px;
+        }
+        .profile .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .logout {
+            float: right;
+        }
+        .books {
+            margin-bottom: 20px;
+        }
+        .books h2 {
+            margin-bottom: 10px;
+        }
+        .book {
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            margin: 10px;
+        }
+        .book img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .book p {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{librarian[1]}}</h1>
+        
+        <!-- Logout Button -->
+        <div class="logout">
+            <a href="{{ url_for('login') }}" class="button">Logout</a>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile">
+            <a href="{{ url_for('edit_librarian_profile', librarian_id=librarian_id) }}" class="button">Edit Profile</a>
+        </div>
+
+        <!-- Browse Books Section -->
+        <div class="books">
+            <h2>Browse Books</h2>
+            <!-- Example books with images and names -->
+            <div class="book">
+                <img src="{{ url_for('static', filename='images/book1.jpeg') }}" alt="Book 1">
+                <p>Book 1</p>
+            </div>
+            <div class="book">
+                <img src="{{ url_for('static', filename='images/book2.jpeg') }}" alt="Book 2">
+                <p>Book 2</p>
+            </div>
+            <div class="book">
+                <img src="{{ url_for('static', filename='images/book3.jpeg') }}" alt="Book 3">
+                <p>Book 3</p>
+            </div>
+            <!-- Add more books as needed -->
+        </div>
+
+        <!-- Place Order Section -->
+        <div class="order">
+            <h2>Place Order for a Book</h2>
+            <form action="#" method="post">
+                <label for="bookTitle">Book Title:</label>
+                <input type="text" id="bookTitle" name="bookTitle" required>
+                <br><br>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+                <br><br>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+                <br><br>
+                <input type="submit" value="Place Order" class="button">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
